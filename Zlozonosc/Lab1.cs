@@ -13,19 +13,28 @@ namespace Zlozonosc
         #region sortowanie babelkowe
         private static int[] Sortowanie(int[] tabsort)
         {
-            int z = 0;
+            Console.WriteLine("Sortowanie i tworzenie wykresu, prosze czekac!");
+
+           
+
+            string nazwa = null;
+            Console.WriteLine("Podaj nazwe pliku do jakiego chcesz zapisac dane wykresu: ");
+            nazwa = Console.ReadLine();            
+            TextWriter doWykresu = new StreamWriter(Directory.GetCurrentDirectory() + "/" + nazwa + ".csv", true);
+
             int[] temp = new int[tabsort.Length];
-            TextWriter doWykresu = new StreamWriter(Directory.GetCurrentDirectory() + "\\doWykresu.csv", true);
+
             Stopwatch sw = new Stopwatch();
             for (int k = 2; k < tabsort.Length + 1; k++)
             {
-
-                for (int t = 0; t < tabsort.Length; t++)
-
+                
+                int t = 0;
+                for (t = 0; t < tabsort.Length; t++)
                 {
                     temp[t] = tabsort[t];
                 }
 
+               
                 sw.Start();
                 for (int j = 0; j < k; j++)
                 {
@@ -36,7 +45,7 @@ namespace Zlozonosc
                             var a = temp[i];
                             temp[i] = temp[i + 1];
                             temp[i + 1] = a;
-                            z++;
+                            
                         }
 
 
@@ -52,13 +61,12 @@ namespace Zlozonosc
             }
 
             doWykresu.Close();
-            Console.WriteLine($"Ilosc podmian w if = {z}");
             Console.WriteLine($"Czas Sortowania ={sw.Elapsed.TotalMilliseconds}ms");
 
             /*foreach (var i in tabsort)
                 Console.WriteLine(i);*/
 
-            return tabsort;
+            return temp;
         }
         #endregion
 
@@ -78,7 +86,7 @@ namespace Zlozonosc
             int[] daneDoSortowania =
             {5, 3, 4, 5, 6, 10, 1, 2, 3, 4, 5, 6, 10, 20, 14, 15, 16, 2, 4, 7};*/
 
-            string dataFilePath = Directory.GetCurrentDirectory() + "/" + nazwa + ".txt"; ;
+            string dataFilePath = Directory.GetCurrentDirectory() + "/" + nazwa + ".txt"; 
 
 
             foreach (var arrayElement in doZapisu)
@@ -145,7 +153,7 @@ namespace Zlozonosc
                     {
                         int[] doSortowania = ReadFromTxt();
                         Console.WriteLine("Wczytano z pliku txt.");
-                        Console.ReadKey(true); ;
+                        Console.ReadKey(true); 
                         Menu(doSortowania);
                     }
                     break;
@@ -209,7 +217,7 @@ namespace Zlozonosc
         #region Wczytywanie z pliku txt
         public static int[] ReadFromTxt()
         {
-            string dataFilePath = Directory.GetCurrentDirectory() + "\\test.txt"; ;
+            string dataFilePath = Directory.GetCurrentDirectory() + "\\liczby.txt"; ;
             StreamReader myFile = new StreamReader(dataFilePath);
             string myString = myFile.ReadToEnd();
             myFile.Close();
@@ -229,7 +237,7 @@ namespace Zlozonosc
 
             #region dodawanie tablicy odwrotnej
 
-            int[] myNumbers2 = new int[2 * afterSplit.Length - 2];
+           /* int[] myNumbers2 = new int[2 * afterSplit.Length - 2];
             for (int i = 0; i < afterSplit.Length - 1; i++)
             {
                 myNumbers2[i] = myNumbers[i];
@@ -242,13 +250,13 @@ namespace Zlozonosc
             {
                 myNumbers2[i] = myNumbers[j];
                 j++;
-            }
+            }*/
             #endregion
 
 
             Console.WriteLine();
             Console.WriteLine();
-            return myNumbers2;
+            return myNumbers;
         }
         #endregion
 
@@ -269,6 +277,7 @@ namespace Zlozonosc
         #region ciag fibb
         private static unsafe void Fibb(int ileIte)
         {
+           
 
             int* fib = stackalloc int[ileIte];
             int* p = fib;
@@ -276,9 +285,11 @@ namespace Zlozonosc
             *p++ = *p++ = 1;
             for (int i = 2; i < ileIte; ++i, ++p)
             {
-
+               
                 *p = p[-1] + p[-2];
+               
             }
+           
             for (int i = 0; i < ileIte; ++i)
             {
                 Console.WriteLine(fib[i]);

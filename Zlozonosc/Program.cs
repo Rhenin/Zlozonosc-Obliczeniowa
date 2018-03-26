@@ -24,7 +24,7 @@ namespace Zlozonosc
 
             Console.Clear();
             Console.WriteLine("Laboratorium z Zlozeniosc Obliczeniowa.");
-            Console.WriteLine("1. Zadania z Lab1");
+            Console.WriteLine("//1. Zadania z Lab1(aktualnie nieaktywne)");
             Console.WriteLine("2. Zadania z Lab2");
             Console.WriteLine("3. Zakonczenie dzialania programu");
 
@@ -37,12 +37,17 @@ namespace Zlozonosc
 
             switch (zmiana)
             {
-                case "D1":
+                /*case "D1":
                     {
                         Lab1.Menu(data);
                     }
+                    break;*/
+                case "D2":
+                {
+                    Lab2.Menu(data);
+                }
                     break;
-               
+
                 case "D3":
                     {
                         Console.WriteLine("Bywaj");
