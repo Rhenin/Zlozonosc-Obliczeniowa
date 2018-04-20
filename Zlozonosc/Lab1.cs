@@ -197,7 +197,7 @@ namespace Zlozonosc
                 case "D6":
                     {
                         
-                        Program.Menu(data);
+                        Program.Menu();
                     }
                     break;
 

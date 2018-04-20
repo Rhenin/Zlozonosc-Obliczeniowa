@@ -18,7 +18,7 @@ namespace Zlozonosc
     class Program
     {
         #region menu
-        public static void Menu(int[] data)
+        public static void Menu()
         {
 
 
@@ -39,11 +39,13 @@ namespace Zlozonosc
             {
                 /*case "D1":
                     {
+                        int[] data = new int[1];
                         Lab1.Menu(data);
                     }
                     break;*/
                 case "D2":
                 {
+                    List<dList> data = new List<dList>();
                     Lab2.Menu(data);
                 }
                     break;
@@ -60,7 +62,7 @@ namespace Zlozonosc
                     Console.WriteLine();
                     Console.WriteLine("Niepoprawna akcja!");
                     Console.ReadKey(true);
-                    Menu(data);
+                    Menu();
                     break;
             }
 
@@ -72,8 +74,9 @@ namespace Zlozonosc
         {
             var dataFilePath = Directory.GetCurrentDirectory();
             Console.WriteLine(dataFilePath);
-            int[] data = new int[1];
-            Menu(data);
+            
+           
+            Menu();
            
 
             Console.WriteLine();
