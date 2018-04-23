@@ -45,7 +45,7 @@ namespace Zlozonosc
                     break;*/
                 case "D2":
                 {
-                    List<dList> data = new List<dList>();
+                    LinkedList<dList> data = new LinkedList<dList>();
                     Lab2.Menu(data);
                 }
                     break;
@@ -70,14 +70,49 @@ namespace Zlozonosc
 
         }
         #endregion
+
+        public static List<string> Generate()
+        {
+            string engFilePath = Directory.GetCurrentDirectory() + "\\eng.txt";
+            StreamReader myEngFile = new StreamReader(engFilePath);
+            string myEngString = myEngFile.ReadToEnd();
+            myEngFile.Close();
+
+            string[] stringSeparatorsEng = new string[] { "\n" };
+            string[] afterSplitEng = myEngString.Split(stringSeparatorsEng, StringSplitOptions.None);
+
+            string numFilePath = Directory.GetCurrentDirectory() + "\\toFind.txt";
+            StreamReader myNumFile = new StreamReader(numFilePath);
+            string myNumString = myNumFile.ReadToEnd();
+            myEngFile.Close();
+
+            string[] stringSeparatorsNum = new string[] { "\r\n" };
+            string[] afterSplitNum = myNumString.Split(stringSeparatorsNum, StringSplitOptions.None);
+
+            int[] index = new int[afterSplitNum.Length - 1];
+            for (int i = 0; i < afterSplitNum.Length - 1; i++)
+            {
+                index[i] = Int32.Parse(afterSplitNum[i]);
+            }
+         
+
+            List<string> toFind = new List<string>();
+            for (int i = 0; i < afterSplitNum.Length-1; i++)
+            {
+                toFind.Add(afterSplitEng[index[i]]);
+            }
+
+            return toFind;
+        }
+
         private static void Main(string[] args)
         {
             var dataFilePath = Directory.GetCurrentDirectory();
             Console.WriteLine(dataFilePath);
-            
+
            
             Menu();
-           
+
 
             Console.WriteLine();
             Console.ReadLine();

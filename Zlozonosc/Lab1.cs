@@ -11,7 +11,7 @@ namespace Zlozonosc
     static class Lab1
     {
         #region sortowanie babelkowe
-        private static int[] Sortowanie(int[] tabsort)
+        public static int[] Sortowanie(int[] tabsort)
         {
             Console.WriteLine("Sortowanie i tworzenie wykresu, prosze czekac!");
 
@@ -271,6 +271,32 @@ namespace Zlozonosc
                 liczby[i] = random.Next(1, 10000);
             }
             return liczby;
+        }
+        #endregion
+
+        #region random without duplicates
+        public static int[] RandDuplicate()
+        {
+            
+
+            Random random = new Random();
+            int[] numbers = new int[1000];
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                while (numbers[i] == 0)
+                {
+                    int z = random.Next(1, 14430);
+                    if (!numbers.Contains(z))
+                    {
+                        numbers[i] = z;
+                    }
+                  
+                }
+            }
+
+          
+            return numbers;
         }
         #endregion
 
