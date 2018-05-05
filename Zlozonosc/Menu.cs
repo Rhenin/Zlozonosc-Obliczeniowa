@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace Zlozonosc
@@ -70,10 +67,9 @@ namespace Zlozonosc
             Console.WriteLine("Lab 1.");
             Console.WriteLine("1. Wczytanie danych z pliku txt.");
             Console.WriteLine("2. Sortowanie wczytanych danych.");
-            Console.WriteLine("3. Zapis danych do txt.");
-            Console.WriteLine("4. Zapis danych do csv.");
-            Console.WriteLine("5. Ciag fibonacciego ");
-            Console.WriteLine("6. Cofnij");
+            Console.WriteLine("3. Zapis danych do csv lub txt.");
+            Console.WriteLine("4. Ciag fibonacciego ");
+            Console.WriteLine("5. Cofnij");
             Console.Write("Wybierz zadanie");
             Console.WriteLine();
             ConsoleKeyInfo choice = Console.ReadKey(true);
@@ -83,7 +79,7 @@ namespace Zlozonosc
             {
                 case "D1":
                     {
-                        Console.WriteLine("Podaj nazwe pliku z ktorego chcesz wczytac.");
+                        Console.WriteLine("Write file name from which you want to read data.");
                         string fileName = Console.ReadLine();
                         List<string> doSortowania = utility.ReadFromFIle(fileName);
                         Console.ReadKey(true);
@@ -92,34 +88,43 @@ namespace Zlozonosc
                     break;
                 case "D2":
                     {
-                        //int[] poSortowaniu = Sortowanie(data);
-                        Console.WriteLine("Posortowano wczytane dane");
-                        Console.ReadKey(true);
-                        //  Menu(poSortowaniu);
+                        if (data == null)
+                        {
+                            Console.WriteLine("Read data from file first.");
+                            Menu.Lab1Menu(data);
+                        }
+                        else
+                        {
+                            List<int> poSortowaniu = Lab1.BubbleSort(data);
+                            Console.WriteLine("Data has been sorted.");
+                            Console.ReadKey(true);
+                            Menu.Lab1Menu(utility.IntToString(poSortowaniu));
+                        }
+                        
                     }
                     break;
                 case "D3":
                     {
-                        //SaveToFileTxt(data);
-                        Console.WriteLine("Zapisano do txt");
-                        Console.ReadKey(true);
-                        Lab1Menu(data);
+                        if (data == null)
+                        {
+                            Console.WriteLine("Read data from file first.");
+                            Menu.Lab1Menu(data);
+                        }
+                        else
+                        {
+                            utility.SaveToFileCsvOrTxt(data);
+                            Console.WriteLine("Data has been saved to the file.");
+                            Console.ReadKey(true);
+                            Lab1Menu(data);
+                        }
+                        
                     }
                     break;
                 case "D4":
                     {
-                        //SaveToFileCsv(data);
-                        Console.WriteLine("Zapisano do csv");
-                        Console.ReadKey(true);
-                        Lab1Menu(data);
-
-                    }
-                    break;
-                case "D5":
-                    {
                         Console.WriteLine("Ciag fib");
                         int ileIte = 0;
-                        Console.Write("Wpisz ilość iteracji: ");
+                        Console.Write("How many iterations?: ");
                         ileIte = Convert.ToInt32(Console.ReadLine());
                         Lab1.Fibb(ileIte);
                         Console.ReadKey(true);
@@ -127,7 +132,7 @@ namespace Zlozonosc
 
                     }
                     break;
-                case "D6":
+                case "D5":
                     {
 
                         MainMenu();
@@ -136,7 +141,7 @@ namespace Zlozonosc
 
                 default:
                     Console.WriteLine();
-                    Console.WriteLine("Niepoprawna akcja!");
+                    Console.WriteLine("Wrong Action!");
                     Console.ReadKey(true);
                     Lab1Menu(data);
                     break;

@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+[assembly: InternalsVisibleTo("Lab2.cs")]
 namespace Zlozonosc
 {
-    class dList
+    internal class dList
     {
 
-        public string English { get; set; }
-        public string Polish { get; set; }
+        internal string English { get; set; }
+        internal string Polish { get; set; }
        
 
-       public dList(string english, string polish)
+       internal dList(string english, string polish)
         {
             English = english;
             Polish = polish;

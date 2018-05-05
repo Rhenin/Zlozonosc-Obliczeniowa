@@ -2,8 +2,6 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
 
@@ -14,9 +12,6 @@ namespace Zlozonosc
     
     class Lab2
     {
-       
-
-
         internal static LinkedList<dList> ReadWords()
         {
             string engFilePath = Directory.GetCurrentDirectory() + "\\eng.txt"; 
