@@ -16,7 +16,7 @@ namespace Zlozonosc
         #region BubbleSort
         public static List<int> BubbleSort(List<string> tabsortList)
         {
-            Console.WriteLine("Sortowanie i tworzenie wykresu, prosze czekac!");
+            Console.WriteLine("Sorting... Please Wait!");
             int[] tabsort = new int[tabsortList.Count];
             tabsort = utility.StringToInts(tabsortList).ToArray();
             string fileName = null;
@@ -47,7 +47,7 @@ namespace Zlozonosc
                     }
                 }
                 sw.Stop();
-                var newLine = string.Format("{0},{1},",
+                var newLine = string.Format("{0};{1}",
                         k.ToString(), sw.Elapsed.TotalMilliseconds);
                 sw.Reset();
                 doWykresu.WriteLine(newLine.ToString());

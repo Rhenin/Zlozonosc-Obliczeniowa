@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace Zlozonosc
 {
@@ -88,9 +88,10 @@ namespace Zlozonosc
                     break;
                 case "D2":
                     {
-                        if (data == null)
+                        if (!data.Any())
                         {
                             Console.WriteLine("Read data from file first.");
+                            Console.ReadKey(true);
                             Menu.Lab1Menu(data);
                         }
                         else
@@ -105,9 +106,10 @@ namespace Zlozonosc
                     break;
                 case "D3":
                     {
-                        if (data == null)
+                        if (!data.Any())
                         {
                             Console.WriteLine("Read data from file first.");
+                            Console.ReadKey(true);
                             Menu.Lab1Menu(data);
                         }
                         else
@@ -160,7 +162,7 @@ namespace Zlozonosc
             Console.Clear();
             Console.WriteLine("Lab2.");
             Console.WriteLine("1. Wczytanie danych z txt");
-            Console.WriteLine("2. wwypisz");
+            Console.WriteLine("2. wypisz");
             Console.WriteLine("3. szukaj");
             Console.WriteLine("8. Cofnij");
             Console.Write("Wybierz zadanie");
@@ -198,6 +200,7 @@ namespace Zlozonosc
                         Lab2Menu(data);
                     }
                     break;
+              
 
                 case "D8":
                     {

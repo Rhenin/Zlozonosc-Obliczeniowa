@@ -31,7 +31,7 @@ namespace Zlozonosc
         #region ReadDataFromFile
         public static List<string> ReadFromFIle(string fileName)
         {
-            string dataFilePath = Directory.GetCurrentDirectory() + "//" + fileName;
+            string dataFilePath = Directory.GetCurrentDirectory() + "\\" + fileName;
             List<string> data = new List<string>();
             try
             {          
@@ -44,7 +44,7 @@ namespace Zlozonosc
                     {
                         data.Add(line);
                     }
-                    Console.WriteLine("Wczytano poprawnie dane z pliku!");
+                    Console.WriteLine($"Wczytano poprawnie dane z pliku: {fileName}");
                 }
             }
             catch (FileNotFoundException e)
@@ -70,25 +70,29 @@ namespace Zlozonosc
                 {
                     stringBuilder.AppendLine(element);
                 }
+                File.WriteAllText(dataFilePath, stringBuilder.ToString());
 
-                
-            }
-
-            if (fileName.Contains(".csv"))
-            {
-                foreach (var arrayElement in doZapisu)
-                {
-                    var newLine = String.Format("{0};{1}", arrayElement, Environment.NewLine);
-                    stringBuilder.Append(newLine);
-                }
             }
             else
             {
-                Console.WriteLine("Wrong file format, only txt and csv are supported.");
-                Console.WriteLine("Try again");
-                SaveToFileCsvOrTxt(doZapisu);
+                if (fileName.Contains(".csv"))
+                {
+                    foreach (var arrayElement in doZapisu)
+                    {
+                        var newLine = String.Format("{0};{1}", arrayElement, Environment.NewLine);
+                        stringBuilder.Append(newLine);
+                        File.WriteAllText(dataFilePath, stringBuilder.ToString());
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Wrong file format, only txt and csv are supported.");
+                    Console.WriteLine("Try again");
+                    SaveToFileCsvOrTxt(doZapisu);
+                }
             }
-            File.WriteAllText(dataFilePath, stringBuilder.ToString());
+           
+            
         }
         #endregion
 
@@ -162,5 +166,21 @@ namespace Zlozonosc
             return afterConvert;
         }
         #endregion
+
+       
+        private static Random rng = new Random();
+
+        public static void Shuffle<T>(this IList<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
     }
 }
