@@ -20,7 +20,7 @@ namespace Zlozonosc
             int[] tabsort = new int[tabsortList.Count];
             tabsort = utility.StringToInts(tabsortList).ToArray();
             string fileName = null;
-            Console.WriteLine("Podaj nazwe pliku do jakiego chcesz zapisac dane wykresu: ");
+            Console.WriteLine("Name a file in which you want to save Stopwatch data: ");
             fileName = Console.ReadLine();
             TextWriter doWykresu = new StreamWriter(Directory.GetCurrentDirectory() + "/" + fileName + ".csv", true);
             int[] temp = new int[tabsort.Length];

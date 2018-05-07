@@ -119,7 +119,7 @@ namespace Zlozonosc
             {
                 while (numbers[i] == 0)
                 {
-                    int z = random.Next(1, 14430);
+                    int z = random.Next(1, 1000);
                     if (!numbers.Contains(z))
                     {
                         numbers[i] = z;
@@ -168,11 +168,12 @@ namespace Zlozonosc
         #endregion
 
        
-        private static Random rng = new Random();
+        
 
         public static void Shuffle<T>(this IList<T> list)
         {
-            int n = list.Count;
+        Random rng = new Random();
+        int n = list.Count;
             while (n > 1)
             {
                 n--;

@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BST.cs" />
     <Compile Include="dList.cs" />
     <Compile Include="Lab1.cs" />
     <Compile Include="Lab2.cs" />
+    <Compile Include="Lab3.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

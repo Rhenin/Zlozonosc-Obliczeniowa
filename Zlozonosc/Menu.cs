@@ -155,15 +155,17 @@ namespace Zlozonosc
         #endregion
 
         #region Lab2Menu
-        public static void Lab2Menu(LinkedList<dList> data)
+        public static void Lab2Menu(Object data)
         {
 
 
             Console.Clear();
             Console.WriteLine("Lab2.");
             Console.WriteLine("1. Wczytanie danych z txt");
-            Console.WriteLine("2. wypisz");
-            Console.WriteLine("3. szukaj");
+            Console.WriteLine("2. wypisz z listy dwukierunkowej");
+            Console.WriteLine("3. szukaj w liscie dwukierunkowej");
+            Console.WriteLine("4. Wygeneruj drzewo bst");
+            Console.WriteLine("5. Szukaj w drzewie bst");
             Console.WriteLine("8. Cofnij");
             Console.Write("Wybierz zadanie");
             Console.WriteLine();
@@ -177,30 +179,90 @@ namespace Zlozonosc
                         data = Lab2.ReadWords();
                         Console.WriteLine("Wczytano z pliku txt.");
                         Console.ReadKey(true);
-                        Lab2Menu(data);
+                        Lab2Menu((LinkedList<dList>)data);
                     }
                     break;
                 case "D2":
                     {
-                        Lab2.WriteAll(data);
-                        Console.ReadLine();
-                        Console.ReadKey(true);
-                        Lab2Menu(data);
+                        if (data.GetType() == typeof(LinkedList<dList>))
+                        {
+                            Lab2.WriteAll((LinkedList<dList>)data);
+                            Console.ReadLine();
+                            Console.ReadKey(true);
+                            Lab2Menu(data);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Loaded Wrong Object: {data.GetType()}. switch to Diffrent function");
+                        }
+                        
                     }
                     break;
                 case "D3":
                     {
-                        Console.WriteLine("Podaj nazwe pliku z ktorego chcesz wczytac baze slow do szukania.");
+                        if (data.GetType() == typeof(LinkedList<dList>))
+                        {
+                            Console.WriteLine("Podaj nazwe pliku z ktorego chcesz wczytac baze slow do szukania.");
+                            string fileNameEng = Console.ReadLine();
+                            Console.WriteLine("Podaj nazwe pliku z ktorego chcesz wczytac indexy");
+                            string fileNameNum = Console.ReadLine();
+                            Lab2.Search(utility.Generate(fileNameEng, fileNameNum), (LinkedList<dList>)data);
+                            Console.ReadLine();
+                            Console.ReadKey(true);
+                            Lab2Menu(data);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Loaded Wrong Object: {data.GetType()}. switch to Diffrent function");
+                        }
+
+                    }
+                    break;
+                case "D4":
+                {
+                    if (data.GetType() == typeof(LinkedList<dList>))
+                    {
+                            if (!((LinkedList<dList>)data).Any())
+                            {
+                                 Console.WriteLine("Read data from file first.");
+                                 Console.ReadKey(true);
+                                 Lab2Menu(data);
+                            }
+                            else
+                            {
+                                BST.Node root = Lab2.OperationsOnTree((LinkedList<dList>)data);
+                                Console.WriteLine("Three has been created.");
+                                Console.ReadKey(true);
+                                Lab2Menu(root);
+                        
+                            }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Loaded Wrong Object: {data.GetType()}. switch to Diffrent function");
+                    }
+
+                }
+                break;
+
+                case "D5":
+                    if (data.GetType() == typeof(BST.Node))
+                    {
+                        Console.WriteLine("Give a file name in which you have a data base of words.");
                         string fileNameEng = Console.ReadLine();
-                        Console.WriteLine("Podaj nazwe pliku z ktorego chcesz wczytac indexy");
+                        Console.WriteLine("Give a file name in which you have randomized indexes");
                         string fileNameNum = Console.ReadLine();
-                        Lab2.Search(utility.Generate(fileNameEng, fileNameNum), data);
+                        Lab2.SearchBst(utility.Generate(fileNameEng, fileNameNum), (BST.Node)data);
                         Console.ReadLine();
                         Console.ReadKey(true);
                         Lab2Menu(data);
                     }
+                    else
+                    {
+                        Console.WriteLine($"Loaded Wrong Object: {data.GetType()}. switch to Diffrent function");
+                    }
+
                     break;
-              
 
                 case "D8":
                     {
