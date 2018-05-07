@@ -17,8 +17,8 @@ namespace Zlozonosc
         internal static LinkedList<dList> ReadWords()
         {
            
-            List<string> myEngStrings = utility.ReadFromFIle("engSR.txt");
-            List<string> myPolStrings = utility.ReadFromFIle("polS.txt");
+            List<string> myEngStrings = utility.ReadFromFIle("engR.txt");
+            List<string> myPolStrings = utility.ReadFromFIle("pol.txt");
 
             LinkedList<dList> lwList = new LinkedList<dList>();
             for (int i = 0; i < myEngStrings.Count(); i++)

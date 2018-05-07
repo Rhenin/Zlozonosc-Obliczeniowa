@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -14,7 +15,8 @@ namespace Zlozonosc
         {
             var dataFilePath = Directory.GetCurrentDirectory();
             Console.WriteLine(dataFilePath);
-            
+   
+
             Menu.MainMenu();
             
 

@@ -13,9 +13,9 @@ namespace Zlozonosc
 
             Console.Clear();
             Console.WriteLine("Laboratorium z Zlozeniosc Obliczeniowa.");
-            Console.WriteLine("1. Zadania z Lab1");
+            Console.WriteLine("1. //Zadania z Lab1");
             Console.WriteLine("2. Zadania z Lab2");
-            Console.WriteLine("3. Zadania z Lab3");
+            Console.WriteLine("3. //Zadania z Lab3");
             Console.WriteLine("4. Zakonczenie dzialania programu");
 
 
@@ -27,24 +27,24 @@ namespace Zlozonosc
 
             switch (zmiana)
             {
-                case "D1":
+                /*case "D1":
                 {
                     List<string> data = new List<string>();
                     Lab1Menu(data);
                 }
-                    break;
+                    break;*/
                 case "D2":
                 {
                     LinkedList<dList> data = new LinkedList<dList>();
                     Lab2Menu(data);
                 }
                     break;
-                case "D3":
+                /*case "D3":
                 {
                     int[] data = new int[0];
                     Lab3Menu(data);
                 }
-                    break;
+                    break;*/
 
                 case "D4":
                 {
@@ -172,7 +172,6 @@ namespace Zlozonosc
             Console.WriteLine("2. wypisz z listy dwukierunkowej");
             Console.WriteLine("3. szukaj w liscie dwukierunkowej");
             Console.WriteLine("4. Wygeneruj drzewo bst");
-            Console.WriteLine("5. Szukaj w drzewie bst");
             Console.WriteLine("8. Cofnij");
             Console.Write("Wybierz zadanie");
             Console.WriteLine();
@@ -248,7 +247,7 @@ namespace Zlozonosc
                             else
                             {
                                 BST.Node root = Lab2.OperationsOnTree((LinkedList<dList>)data);
-                                Console.WriteLine("Three has been created.");
+                                Console.WriteLine("Tree has been created.");
                                 Console.ReadKey(true);
                                 Lab2Menu(root);
                         
@@ -284,7 +283,7 @@ namespace Zlozonosc
                 case "D8":
                     {
 
-                        Menu.MainMenu();
+                        MainMenu();
                     }
                     break;
 
@@ -311,6 +310,7 @@ namespace Zlozonosc
             Console.WriteLine("1. Wczytanie danych z txt");
             Console.WriteLine("2. QuickSort");
             Console.WriteLine("3. HeapSort");
+            Console.WriteLine("4. Save data to file");
             Console.WriteLine("8. Cofnij");
             Console.Write("Wybierz zadanie");
             Console.WriteLine();
@@ -341,18 +341,16 @@ namespace Zlozonosc
                 case "D3":
                 {
                     BinaryHeap test = new BinaryHeap();
-                    int[] heap = test.BuildMaxHeap(data);
-                    Console.WriteLine("MaxHeap");
+                    int[] heap = test.AscendingHeapSort(data);
+                    Console.WriteLine("AscendingHeapSort");
                     Console.ReadKey(true);
-                    Lab3Menu(data);
+                    Lab3Menu(heap);
                 }
                     break;
                 case "D4":
                 {
-                    BinaryHeap test = new BinaryHeap();
-                    int[] heap = test.BuildMinHeap(data);
-                    Console.WriteLine("MinHeap");
-                    Console.ReadKey(true);
+                    List<int> toSave = data.ToList();
+                    utility.SaveToFileCsvOrTxt(utility.IntToString(toSave));
                     Lab3Menu(data);
                 }
                     break;

@@ -134,8 +134,46 @@ namespace Zlozonosc
         }
         #endregion
 
-      
-      
+        #region
+        public int[] AscendingHeapSort(int[] A)
+        {
+
+            // Ensure all parents are greater than their children
+            BuildMaxHeap(A);
+
+            for (int i = A.Length - 1; i >= 0; i--)
+            {
+                int temp = A[0];
+                A[0] = A[i];
+                A[i] = temp;
+                heapSize--;
+                MaxHeapify(A, 0);
+            }
+
+            return A;
+
+        }
+
+        public int[] DescendingHeapSort(int[] A)
+        {
+
+            // Ensure all parents are less than their children
+            BuildMinHeap(A);
+
+            for (int i = A.Length - 1; i >= 0; i--)
+            {
+                int temp = A[0];
+                A[0] = A[i];
+                A[i] = temp;
+                heapSize--;
+                MinHeapify(A, 0);
+            }
+
+            return A;
+        }
+        #endregion
+
+
 
 
 
