@@ -15,7 +15,8 @@ namespace Zlozonosc
             Console.WriteLine("Laboratorium z Zlozeniosc Obliczeniowa.");
             Console.WriteLine("1. Zadania z Lab1");
             Console.WriteLine("2. Zadania z Lab2");
-            Console.WriteLine("3. Zakonczenie dzialania programu");
+            Console.WriteLine("3. Zadania z Lab3");
+            Console.WriteLine("4. Zakonczenie dzialania programu");
 
 
 
@@ -38,8 +39,14 @@ namespace Zlozonosc
                     Lab2Menu(data);
                 }
                     break;
-
                 case "D3":
+                {
+                    int[] data = new int[0];
+                    Lab3Menu(data);
+                }
+                    break;
+
+                case "D4":
                 {
                     Console.WriteLine("Bywaj");
                     Console.ReadKey(true);
@@ -202,14 +209,24 @@ namespace Zlozonosc
                     {
                         if (data.GetType() == typeof(LinkedList<dList>))
                         {
-                            Console.WriteLine("Podaj nazwe pliku z ktorego chcesz wczytac baze slow do szukania.");
-                            string fileNameEng = Console.ReadLine();
-                            Console.WriteLine("Podaj nazwe pliku z ktorego chcesz wczytac indexy");
-                            string fileNameNum = Console.ReadLine();
-                            Lab2.Search(utility.Generate(fileNameEng, fileNameNum), (LinkedList<dList>)data);
-                            Console.ReadLine();
-                            Console.ReadKey(true);
-                            Lab2Menu(data);
+                            if (!((LinkedList<dList>)data).Any())
+                            {
+                                Console.WriteLine("Read data from file first.");
+                                Console.ReadKey(true);
+                                Lab2Menu(data);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Podaj nazwe pliku z ktorego chcesz wczytac baze slow do szukania.");
+                                string fileNameEng = Console.ReadLine();
+                                Console.WriteLine("Podaj nazwe pliku z ktorego chcesz wczytac indexy");
+                                string fileNameNum = Console.ReadLine();
+                                Lab2.Search(utility.Generate(fileNameEng, fileNameNum), (LinkedList<dList>)data);
+                                Console.ReadLine();
+                                Console.ReadKey(true);
+                                Lab2Menu(data);
+                            }
+                            
                         }
                         else
                         {
@@ -283,5 +300,80 @@ namespace Zlozonosc
 
         }
         #endregion
+
+        #region lab3 menu
+        public static void Lab3Menu(int[] data)
+        {
+
+
+            Console.Clear();
+            Console.WriteLine("Lab3.");
+            Console.WriteLine("1. Wczytanie danych z txt");
+            Console.WriteLine("2. QuickSort");
+            Console.WriteLine("3. HeapSort");
+            Console.WriteLine("8. Cofnij");
+            Console.Write("Wybierz zadanie");
+            Console.WriteLine();
+            ConsoleKeyInfo choice = Console.ReadKey(true);
+            string zmiana = choice.Key.ToString();
+
+            switch (zmiana)
+            {
+                case "D1":
+                    {
+                        Console.WriteLine("Write a name of file you want to read data from: ");
+                        string fileName = Console.ReadLine();
+                        data = utility.StringToInts(utility.ReadFromFIle(fileName)).ToArray();
+                        Console.WriteLine("Wczytano z pliku txt.");
+                        Console.ReadKey(true);
+                        Lab3Menu(data);
+                    }
+                    break;
+                case "D2":
+                {
+
+                    int[] poSortowaniu = Lab3.Qs(data, 0, data.Length - 1);
+                    Console.WriteLine("Posortowano wczytane dane");
+                    Console.ReadKey(true);
+                    Lab3Menu(poSortowaniu);
+                    }
+                    break;
+                case "D3":
+                {
+                    BinaryHeap test = new BinaryHeap();
+                    int[] heap = test.BuildMaxHeap(data);
+                    Console.WriteLine("MaxHeap");
+                    Console.ReadKey(true);
+                    Lab3Menu(data);
+                }
+                    break;
+                case "D4":
+                {
+                    BinaryHeap test = new BinaryHeap();
+                    int[] heap = test.BuildMinHeap(data);
+                    Console.WriteLine("MinHeap");
+                    Console.ReadKey(true);
+                    Lab3Menu(data);
+                }
+                    break;
+                case "D8":
+                    {
+
+                        MainMenu();
+                    }
+                    break;
+
+                default:
+                    Console.WriteLine();
+                    Console.WriteLine("Niepoprawna akcja!");
+                    Console.ReadKey(true);
+                    Lab2Menu(data);
+                    break;
+            }
+
+            Console.WriteLine();
+
+        }
+#endregion
     }
 }
