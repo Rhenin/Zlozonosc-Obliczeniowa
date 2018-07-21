@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Authentication.ExtendedProtection;
 
 
 namespace Zlozonosc
@@ -15,9 +16,12 @@ namespace Zlozonosc
         {
             var dataFilePath = Directory.GetCurrentDirectory();
             Console.WriteLine(dataFilePath);
-   
 
-            Menu.MainMenu();
+            Lab2.OperationsOnTree(Lab2.ReadWords());
+            
+            
+            //Menu.MainMenu();
+            
             
 
             Console.WriteLine();

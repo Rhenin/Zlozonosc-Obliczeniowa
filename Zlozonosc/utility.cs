@@ -39,7 +39,7 @@ namespace Zlozonosc
                 {
 
                     string line = null;
-                    int i = 0;
+                  
                     while ((line = myFile.ReadLine()) != null)
                     {
                         data.Add(line);
@@ -97,14 +97,14 @@ namespace Zlozonosc
         #endregion
 
         #region GenerateRandomInts
-        private static int[] RandomInts()
+        public static int[] RandomInts()
         {
             Random random = new Random();
-            int[] liczby = new int[10000];
+            int[] liczby = new int[100];
 
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100; i++)
             {
-                liczby[i] = random.Next(1, 10000);
+                liczby[i] = random.Next(0, 999);
             }
             return liczby;
         }
@@ -119,7 +119,7 @@ namespace Zlozonosc
             {
                 while (numbers[i] == 0)
                 {
-                    int z = random.Next(1, 1000);
+                    int z = random.Next(1, 14430);
                     if (!numbers.Contains(z))
                     {
                         numbers[i] = z;

@@ -13,9 +13,9 @@ namespace Zlozonosc
 
             Console.Clear();
             Console.WriteLine("Laboratorium z Zlozeniosc Obliczeniowa.");
-            Console.WriteLine("1. //Zadania z Lab1");
+            Console.WriteLine("1. Zadania z Lab1");
             Console.WriteLine("2. Zadania z Lab2");
-            Console.WriteLine("3. //Zadania z Lab3");
+            Console.WriteLine("3. Zadania z Lab3");
             Console.WriteLine("4. Zakonczenie dzialania programu");
 
 
@@ -27,24 +27,24 @@ namespace Zlozonosc
 
             switch (zmiana)
             {
-                /*case "D1":
+                case "D1":
                 {
                     List<string> data = new List<string>();
                     Lab1Menu(data);
                 }
-                    break;*/
+                    break;
                 case "D2":
                 {
                     LinkedList<dList> data = new LinkedList<dList>();
                     Lab2Menu(data);
                 }
                     break;
-                /*case "D3":
+                case "D3":
                 {
                     int[] data = new int[0];
                     Lab3Menu(data);
                 }
-                    break;*/
+                    break;
 
                 case "D4":
                 {
@@ -268,7 +268,7 @@ namespace Zlozonosc
                         string fileNameEng = Console.ReadLine();
                         Console.WriteLine("Give a file name in which you have randomized indexes");
                         string fileNameNum = Console.ReadLine();
-                        Lab2.SearchBst(utility.Generate(fileNameEng, fileNameNum), (BST.Node)data);
+                       
                         Console.ReadLine();
                         Console.ReadKey(true);
                         Lab2Menu(data);
